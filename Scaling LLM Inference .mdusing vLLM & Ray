@@ -1,0 +1,50 @@
+Scaling LLM Inference using vLLM & Ray
+
+This session demonstrates how to achieve scalable and high-performance ML inference by combining Ray Serve's distributed computing capabilities with vLLM's efficient memory management. You'll learn to deploy a robust LLM inference solution on Amazon EKS that can easily handle varying workloads across your cluster. This approach offers a powerful and adaptable framework for AI-driven applications with diverse computational demands.
+
+What You'll Build
+
+In this module, you will:
+
+Deploy the Mistral-7B-Instruct-v0.3  model using RayServe and vLLM.
+Set up a vLLM Python application with FastAPI-based serving logic for efficient model inference.
+Leverage Ray's autoscaling features with Nvidia instances to optimize performance.
+Configure environment settings and scaling parameters for model serving.
+Deploy Open WebUI, a user-friendly interface for interacting with your LLM.
+Architecture Overview
+
+
+
+![Architecture Overview](https://static.us-east-1.prod.workshops.aws/85fd70c2-7095-4188-af02-416500d6fec5/static/images/300-rayserve/rayserve-architecture.png?Key-Pair-Id=K36Q2WVO3JP7QD&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9zdGF0aWMudXMtZWFzdC0xLnByb2Qud29ya3Nob3BzLmF3cy84NWZkNzBjMi03MDk1LTQxODgtYWYwMi00MTY1MDBkNmZlYzUvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc2MTEwMDQ0N319fV19&Signature=IBwHtwA6vL3wtRrGIPjMmg3qg5GsLWbaQ1T81l8BNMBc6nkrxRfBhS5EsRH93TVl1ZETfUp09pKBk7KBGdndhnqh5NXrpwhFZ1woG9h1xQZY1USoQAVloR3W509oHSWiden6DgpSoX13iRQnnihQ7JaAnS5Nv%7EVg9cN1WA2Icrm4K7-gc9frZ%7EmQH3R7%7Ek1TbiA4D6WwfP4-%7EVe2paNHWrOrA6xbvy%7ECbbhvzhJtDtVkNrjD8daPoYw97fSUq0tkSx7KYPV7PCj-6hcoj5Wt4TrjqNg8hmJkTq9X7wM1nOucDt0is%7EG11UsPQ9iSVbKBhSbLuexVSz-cNjmgT7zl4g__)
+
+
+
+To give you a clear picture of what we'll be building, here's the high-level architecture of our LLM inference solution:
+
+rayserve-architecture
+
+This diagram illustrates the key components of our scalable LLM inference system:
+
+Entry Point: A chat virtual assistant application sends requests to the inference service.
+
+Orchestration: The core of the system runs on Amazon EKS, managed by Managed Node Groups for dynamic scaling.
+
+Compute Resources: Within EKS, there are two main node types:
+
+m5.xlarge or a similar CPU-only instance running the Ray Head Pod, which does not need to be on an accelerated instance.
+g6e.2xlarge instance running the Ray Worker Pod, which includes:
+The Mistral-7B-Instruct-v0.3 model replica with vLLM
+NVIDIA device plugin to enable Kubernetes to recognize and schedule GPU resources on nodes
+Storage and Container Management: The system integrates with Amazon ECR for container management and FSx for Lustre for high-performance file storage.
+
+This architecture combines Ray Serve's distributed computing capabilities with vLLM's efficient memory management, allowing us to achieve scalable and high-performance ML inference on Amazon EKS.
+
+By the end of this session, you'll have hands-on experience in deploying a scalable, high-performance LLM inference solution on Amazon EKS using cutting-edge tools and practices. Let's get started!
+
+Why Ray Serve?
+Ray  is one of several popular, open-source frameworks for building and managing generative AI applications. Ray Serve  is the Ray component used for building and serving inference APIs.
+
+Ray is not strictly required for building and managing generative AI applications. There are other frameworks such as Kubeflow  and MLflow  that can be used to build and manage generative AI applications. While the workshop implementation uses Ray, the concepts and techniques discussed here can be applied to other frameworks as well.
+
+
+
