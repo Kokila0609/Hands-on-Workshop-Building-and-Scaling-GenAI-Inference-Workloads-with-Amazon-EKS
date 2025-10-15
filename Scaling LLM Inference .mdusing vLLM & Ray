@@ -11,6 +11,7 @@ Set up a vLLM Python application with FastAPI-based serving logic for efficient 
 Leverage Ray's autoscaling features with Nvidia instances to optimize performance.
 Configure environment settings and scaling parameters for model serving.
 Deploy Open WebUI, a user-friendly interface for interacting with your LLM.
+
 Architecture Overview
 
 
